@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Alert, KeyboardAvoidingView, Keyboard } from "react-native";
-import { Body, Container, ContainerList, List, Title } from "./styles";
+import { Body, Container, ContainerList, Form, Icon, InputTask, List, Title } from "./styles";
 import {ionIcons, MaterialIcons} from "@expo/vector-icons";
 
 export default function Home(){
@@ -41,11 +41,17 @@ export default function Home(){
           <List data={task} key={item => item.toString()} renderItem={({item})=>{
             <ContainerList>
               <Title>{item}</Title>
+              <Icon onPress={removeTask(item)}>
+                <MaterialIcons name = "delete-forever" size={25} color='#f64c75'/>
+              </Icon>
             </ContainerList>
           }}>
 
           </List>
         </Body>
+        <Form>
+          <InputTask placeholder='Insira sua tarefa' onPress={addTask()}/>
+        </Form>
       </Container>
     </KeyboardAvoidingView>
     
